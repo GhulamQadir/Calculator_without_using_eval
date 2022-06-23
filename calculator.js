@@ -1,30 +1,26 @@
 var numberArray = [];
 var operators = ["+", "-", "*", "/"]
+var operator = ""
 // var num1 = 0, operator = "", num2 = 0;
+
+
 
 
 function getNum(num) {
     var inputVal = document.getElementById('inputVal');
     inputVal.value += (num)
+    if (inputVal.value === "+" || inputVal.value === "-" || inputVal.value === "*" || inputVal.value === "/") {
+        inputVal.value = ""
+    }
 
-    // if (numberArray[0].length === 2) {
-    //     getResult()
-    // }
-    //     for (var i in inputVal.value) {
-    //         if (inputVal.value[i] === "+") {
-    //             operator = inputVal.value[i]
 
-    //             console.log(operator)
 
-    //             var value = inputVal.value.split("+")
-    //             completeVal.push(value)
-    //             // num1 = Number(completeVal[0])
-    //             // num2 = Number(completeVal[1])
-    //             // console.log(num1 + num2)
-    //             // console.log(completeVal)
 
-    //         }
-    //     }
+
+}
+
+
+function getOperator() {
 
 }
 
@@ -53,9 +49,6 @@ function getResult() {
         if (inputVal[i] === "+" || inputVal[i] === "-" || inputVal[i] === "*" || inputVal[i] === "/") {
 
             oper = inputVal[i];
-            // if (oper > 1) {
-            //     oper = oper
-            // }
             console.log(oper)
             var splitted = inputVal.split(oper)
             numberArray.push(splitted)
@@ -88,6 +81,8 @@ function getResult() {
 
     inputVal2.value = total;
     console.log(total)
+
+    numberArray = []
 }
 
 function back() {
