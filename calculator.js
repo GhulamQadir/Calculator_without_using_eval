@@ -1,24 +1,58 @@
 var numberArray = [];
 var operators = ["+", "-", "*", "/", "%"]
-var operator = ""
+var firstNum = "";
+var secondNum = "";
+var operator = "";
+var isOperatorPressed = false;
 
 
 
 
 function getNum(num) {
     var inputVal = document.getElementById('inputVal');
-    inputVal.value += (num)
+    inputVal.value = num
     if (inputVal.value === "+" || inputVal.value === "-" || inputVal.value === "*" || inputVal.value === "/" || inputVal.value === "%") {
         inputVal.value = ""
     }
-    var inputVal2 = document.getElementById('inputVal').value;
+
+
+
+    if (isOperatorPressed) {
+        inputVal.value = "";
+        isOperatorPressed = false;
+    }
+    inputVal.value += num;
+
+
+
 }
 
 
 
 
 
-function getOperator() {
+function getOperator(opr) {
+    // var inputVal = document.getElementById('inputVal');
+    // isOperatorPressed = true;
+    // firstNum = inputVal.value;
+    // operator = opr;
+    // // isOperatorPressed = true;
+    // // var inputVal = document.getElementById('inputVal');
+    // // firstNum = inputVal.value;
+
+    // console.log(firstNum)
+    // console.log(operator)
+
+    // // console.log(secondNum)
+
+
+    operator = opr;
+    isOperatorPressed = true;
+    if (firstNum) {
+    }
+    if (secondNum) {
+        var result = firstNum;
+    }
 
 }
 
@@ -51,6 +85,8 @@ function getResult() {
     }
     var num1 = Number(numberArray[0][0]);
     var num2 = Number(numberArray[0][1]);
+    // calculator-7e3b5
+
     if (oper === "+") {
         total = num1 + num2
     }
