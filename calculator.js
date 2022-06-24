@@ -10,7 +10,7 @@ var isOperatorPressed = false;
 
 function getNum(num) {
     var inputVal = document.getElementById('inputVal');
-    inputVal.value = num
+    inputVal.value += num
     if (inputVal.value === "+" || inputVal.value === "-" || inputVal.value === "*" || inputVal.value === "/" || inputVal.value === "%") {
         inputVal.value = ""
     }
@@ -18,10 +18,18 @@ function getNum(num) {
 
 
     if (isOperatorPressed) {
-        inputVal.value = "";
+        inputVal.value = num;
         isOperatorPressed = false;
     }
-    inputVal.value += num;
+
+
+    if (firstNum != "" && operator != "") {
+        secondNum = inputVal.value
+
+    }
+    console.log(`Second num ${secondNum}`)
+
+    // inputVal.value += num;
 
 
 
@@ -32,28 +40,38 @@ function getNum(num) {
 
 
 function getOperator(opr) {
-    // var inputVal = document.getElementById('inputVal');
-    // isOperatorPressed = true;
-    // firstNum = inputVal.value;
-    // operator = opr;
-    // // isOperatorPressed = true;
-    // // var inputVal = document.getElementById('inputVal');
-    // // firstNum = inputVal.value;
-
-    // console.log(firstNum)
-    // console.log(operator)
-
-    // // console.log(secondNum)
+    isOperatorPressed = true
+    var inputVal = document.getElementById('inputVal');
+    firstNum = inputVal.value;
 
 
-    operator = opr;
-    isOperatorPressed = true;
+    if (firstNum != "") {
+        operator = opr
+
+    }
+
+
+
+
     if (firstNum) {
+        console.log(`First num: ${firstNum}`)
+
+        if (operator) {
+            console.log(operator)
+            if (secondNum) {
+                // console.log(`First num: ${firstNum}`)
+                // console.log(operator)
+                console.log(`Second num>>: ${secondNum}`)
+            }
+        }
     }
     if (secondNum) {
-        var result = firstNum;
-    }
 
+        getResult()
+        // console.log("bhai kam hojay bharosa rkho")
+
+    }
+    // console.log(`dusra number==>>${secondNum}`)
 }
 
 
@@ -69,50 +87,54 @@ function clearInput() {
 
 
 function getResult() {
+    console.log("ma get result hon")
+    console.log(`pehla: ${firstNum}`)
+    console.log(operator)
+    console.log(`dusra: ${secondNum}`)
 
-    var inputVal = document.getElementById('inputVal').value;
-    var oper = ""
-    var total = 0
-    for (var i = 0; i < inputVal.length; i++) {
-        if (inputVal[i] === "+" || inputVal[i] === "-" || inputVal[i] === "*" || inputVal[i] === "/") {
+    // var inputVal = document.getElementById('inputVal').value;
+    // var oper = ""
+    // var total = 0
+    // for (var i = 0; i < inputVal.length; i++) {
+    //     if (inputVal[i] === "+" || inputVal[i] === "-" || inputVal[i] === "*" || inputVal[i] === "/") {
 
-            oper = inputVal[i];
-            console.log(oper)
-            var splitted = inputVal.split(oper)
-            numberArray.push(splitted)
-            console.log(splitted)
-        }
-    }
-    var num1 = Number(numberArray[0][0]);
-    var num2 = Number(numberArray[0][1]);
-    // calculator-7e3b5
+    //         oper = inputVal[i];
+    //         console.log(oper)
+    //         var splitted = inputVal.split(oper)
+    //         numberArray.push(splitted)
+    //         console.log(splitted)
+    //     }
+    // }
+    // var num1 = Number(numberArray[0][0]);
+    // var num2 = Number(numberArray[0][1]);
+    // // calculator-7e3b5
 
-    if (oper === "+") {
-        total = num1 + num2
-    }
-    else if (oper === "-") {
-        total = num1 - num2
-    }
+    // if (oper === "+") {
+    //     total = num1 + num2
+    // }
+    // else if (oper === "-") {
+    //     total = num1 - num2
+    // }
 
-    else if (oper === "*") {
-        total = num1 * num2
-    }
+    // else if (oper === "*") {
+    //     total = num1 * num2
+    // }
 
-    else if (oper === "/") {
-        total = (num1 / num2).toFixed(2)
-    }
-    else if (oper === "%") {
-        total = num1 % num2
-    }
-    console.log(num2)
+    // else if (oper === "/") {
+    //     total = (num1 / num2).toFixed(2)
+    // }
+    // else if (oper === "%") {
+    //     total = num1 % num2
+    // }
+    // console.log(num2)
 
 
-    var inputVal2 = document.getElementById('inputVal');
+    // var inputVal2 = document.getElementById('inputVal');
 
-    inputVal2.value = total;
-    console.log(total)
+    // inputVal2.value = total;
+    // console.log(total)
 
-    numberArray = []
+    // numberArray = []
 }
 
 function back() {
