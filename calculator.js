@@ -1,11 +1,12 @@
 var numberArray = [];
 var operators = ["+", "-", "*", "/", "%"]
-var firstNum = "";
-var secondNum = "";
-var operator = "";
+var firstNum = Number("");
+var secondNum = Number("");
+var operator = Number("");
 var isOperatorPressed = false;
+var total = 0;
 
-
+var inputVal = document.getElementById('inputVal');
 
 
 function getNum(num) {
@@ -21,8 +22,6 @@ function getNum(num) {
         inputVal.value = num;
         isOperatorPressed = false;
     }
-
-
     if (firstNum != "" && operator != "") {
         secondNum = inputVal.value
 
@@ -47,30 +46,32 @@ function getOperator(opr) {
 
     if (firstNum != "") {
         operator = opr
-
     }
 
 
 
 
-    if (firstNum) {
-        console.log(`First num: ${firstNum}`)
-
-        if (operator) {
-            console.log(operator)
-            if (secondNum) {
-                // console.log(`First num: ${firstNum}`)
-                // console.log(operator)
-                console.log(`Second num>>: ${secondNum}`)
-            }
-        }
-    }
-    if (secondNum) {
-
+    if (firstNum && operator && secondNum) {
         getResult()
-        // console.log("bhai kam hojay bharosa rkho")
+        // console.log(`First num: ${firstNum}`)
 
+        // if (operator) {
+        //     console.log(operator)
+        //     if (secondNum != "") {
+        //         getResult()
+        //         // console.log(`First num: ${firstNum}`)
+        //         // console.log(operator)
+        //         // console.log(`Second num>>: ${secondNum}`)
+        //     }
+        // }
     }
+    // if (firstNum != "" && secondNum != "" && operator != "") {
+    //     console.log("bhai kam hojay bharosa rkho")
+
+    //     getResult()
+    //     // console.log("bhai kam hojay bharosa rkho")
+
+    // }
     // console.log(`dusra number==>>${secondNum}`)
 }
 
@@ -87,10 +88,29 @@ function clearInput() {
 
 
 function getResult() {
-    console.log("ma get result hon")
-    console.log(`pehla: ${firstNum}`)
-    console.log(operator)
-    console.log(`dusra: ${secondNum}`)
+
+    switch (operator) {
+        case "+":
+            total = Number(firstNum) + Number(secondNum)
+        case "-":
+            total = Number(firstNum) - Number(secondNum)
+
+        case "*":
+            total = Number(firstNum) * Number(secondNum)
+
+        case "/":
+            total = Number(firstNum) / Number(secondNum)
+    }
+
+    // if (operator === "+") {
+    //     total = Number(firstNum) + Number(secondNum)
+    // }
+    inputVal.value = total
+    secondNum = ""
+    // console.log("ma get result hon")
+    // console.log(`pehla: ${firstNum}`)
+    // console.log(operator)
+    // console.log(`dusra: ${secondNum}`)
 
     // var inputVal = document.getElementById('inputVal').value;
     // var oper = ""
