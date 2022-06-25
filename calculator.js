@@ -2,7 +2,7 @@ var numberArray = [];
 var operators = ["+", "-", "*", "/", "%"]
 var firstNum = Number("");
 var secondNum = Number("");
-var operator = Number("");
+var operator = "";
 var isOperatorPressed = false;
 var total = 0;
 
@@ -27,11 +27,6 @@ function getNum(num) {
 
     }
     console.log(`Second num ${secondNum}`)
-
-    // inputVal.value += num;
-
-
-
 }
 
 
@@ -41,19 +36,22 @@ function equalsToOperator() {
 
 
 function getOperator(opr) {
-    isOperatorPressed = true
-    var inputVal = document.getElementById('inputVal');
-    firstNum = inputVal.value;
 
-
-    if (firstNum) {
-        operator = opr
+    if (operator) {
+        getResult(firstNum, operator, secondNum) ///ye code abhi add kia ha lkn solution nhi ha proper
+        // alert("Operator is already given")
     }
+    else {
+        isOperatorPressed = true
+        var inputVal = document.getElementById('inputVal');
+        firstNum = inputVal.value;
 
-    if (secondNum) {
-        getResult
+
+        if (firstNum) {
+            operator = opr
+        }
+
     }
-    console.log(operator)
 
 }
 
@@ -71,8 +69,6 @@ function clearInput() {
     inputVal.value = "";
     history.innerHTML = ""
 }
-
-
 
 
 
@@ -96,6 +92,7 @@ function getResult(firstNum, secondNum, operator) {
     }
     inputVal.value = total
     secondNum = ""
+    operator = ""
 }
 
 function back() {
@@ -103,6 +100,3 @@ function back() {
     inputVal.value = inputVal.value.slice(0, -1)
 
 }
-
-
-
