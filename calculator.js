@@ -1,12 +1,9 @@
-
 var firstNum = "";
 var secondNum = "";
 var operator = "";
 var lastOperator = "";
 var isOperatorPressed = false;
 var total = 0;
-
-var inputVal = document.getElementById('inputVal');
 
 
 
@@ -32,22 +29,25 @@ function getNum(num) {
 
 
 
-
 function getOperator(opr) {
 
     isOperatorPressed = true
     var inputVal = document.getElementById('inputVal');
     operator = opr;
 
+    var history = document.getElementById('history');
+
     if (!firstNum) {
         firstNum = inputVal.value;
         lastOperator = opr;
+        history.innerHTML = inputVal.value + opr
         return;
     }
 
     if (firstNum) {
         secondNum = inputVal.value;
         inputVal.value = getResult(firstNum, secondNum, lastOperator ? lastOperator : operator)
+        history.innerHTML = firstNum + opr + secondNum
 
     }
     secondNum = ""
@@ -57,43 +57,46 @@ function getOperator(opr) {
     return;
 }
 
+
+
 function equalsToOperator() {
     getResult(firstNum, secondNum, operator)
 }
 
 
-function getResult(firstNum, secondNum, operator) {
 
+function getResult(firstNum, secondNum, operator) {
+    var history = document.getElementById('history');
     switch (operator) {
         case "+":
             total = Number(firstNum) + Number(secondNum)
             inputVal.value = total;
-            // firstNum = inputVal.value
+            history.innerHTML = firstNum + operator + secondNum
             return total;
-            break;
+
         case "-":
             total = Number(firstNum) - Number(secondNum)
             inputVal.value = total;
+            history.innerHTML = firstNum + operator + secondNum
             return total;
-            break;
 
         case "*":
             total = Number(firstNum) * Number(secondNum)
             inputVal.value = total;
+            history.innerHTML = firstNum + operator + secondNum
             return total;
-            break;
 
         case "/":
             total = Number(firstNum) / Number(secondNum)
             inputVal.value = total;
+            history.innerHTML = firstNum + operator + secondNum
             return total;
-            break;
 
         case "%":
             total = Number(firstNum) % Number(secondNum)
             inputVal.value = total;
+            history.innerHTML = firstNum + operator + secondNum
             return total;
-            break;
     }
     firstNum = inputVal.value
     secondNum = ""
@@ -114,8 +117,9 @@ function clearInput() {
     var inputVal = document.getElementById('inputVal');
     var history = document.getElementById('history')
     firstNum = "";
-    operator = "";
     secondNum = ""
+    operator = "";
+    lastOperator = ""
     total = ""
     inputVal.value = "";
     history.innerHTML = ""
