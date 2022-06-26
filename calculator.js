@@ -1,12 +1,13 @@
-var numberArray = [];
-var operators = ["+", "-", "*", "/", "%"]
-var firstNum = Number("");
-var secondNum = Number("");
+
+var firstNum = "";
+var secondNum = "";
 var operator = "";
+var lastOperator = "";
 var isOperatorPressed = false;
 var total = 0;
 
 var inputVal = document.getElementById('inputVal');
+
 
 
 function getNum(num) {
@@ -22,41 +23,95 @@ function getNum(num) {
         inputVal.value = num;
         isOperatorPressed = false;
     }
+
     if (firstNum != "" && operator != "") {
         secondNum = inputVal.value
 
     }
-    console.log(`Second num ${secondNum}`)
 }
 
+
+
+
+function getOperator(opr) {
+
+    isOperatorPressed = true
+    var inputVal = document.getElementById('inputVal');
+    operator = opr;
+
+    if (!firstNum) {
+        firstNum = inputVal.value;
+        lastOperator = opr;
+        return;
+    }
+
+    if (firstNum) {
+        secondNum = inputVal.value;
+        inputVal.value = getResult(firstNum, secondNum, lastOperator ? lastOperator : operator)
+
+    }
+    secondNum = ""
+    operator = ""
+    lastOperator = "";
+    firstNum = inputVal.value
+    return;
+}
 
 function equalsToOperator() {
     getResult(firstNum, secondNum, operator)
 }
 
 
-function getOperator(opr) {
+function getResult(firstNum, secondNum, operator) {
 
-    if (operator) {
-        getResult(firstNum, operator, secondNum) ///ye code abhi add kia ha lkn solution nhi ha proper
-        // alert("Operator is already given")
+    switch (operator) {
+        case "+":
+            total = Number(firstNum) + Number(secondNum)
+            inputVal.value = total;
+            // firstNum = ""
+            // operator = ""
+            // lastOperator = ""
+            // secondNum = ""
+            // firstNum = inputVal.value
+            return total;
+            break;
+        case "-":
+            total = Number(firstNum) - Number(secondNum)
+            inputVal.value = total;
+            return total;
+            break;
+
+        case "*":
+            total = Number(firstNum) * Number(secondNum)
+            inputVal.value = total;
+            return total;
+            break;
+
+        case "/":
+            total = Number(firstNum) / Number(secondNum)
+            inputVal.value = total;
+            return total;
+            break;
+
+        case "%":
+            total = Number(firstNum) % Number(secondNum)
+            inputVal.value = total;
+            return total;
+            break;
     }
-    else {
-        isOperatorPressed = true
-        var inputVal = document.getElementById('inputVal');
-        firstNum = inputVal.value;
-
-
-        if (firstNum) {
-            operator = opr
-        }
-
-    }
+    firstNum = inputVal.value
+    secondNum = ""
+    lastOperator = ""
+    operator = ""
 
 }
 
 
 
+function back() {
+    var inputVal = document.getElementById('inputVal');
+    inputVal.value = inputVal.value.slice(0, -1)
+}
 
 
 function clearInput() {
@@ -71,32 +126,3 @@ function clearInput() {
 }
 
 
-
-function getResult(firstNum, secondNum, operator) {
-
-    switch (operator) {
-        case "+":
-            total = Number(firstNum) + Number(secondNum)
-            break;
-        case "-":
-            total = Number(firstNum) - Number(secondNum)
-            break;
-
-        case "*":
-            total = Number(firstNum) * Number(secondNum)
-            break;
-
-        case "/":
-            total = Number(firstNum) / Number(secondNum)
-            break;
-    }
-    inputVal.value = total
-    secondNum = ""
-    operator = ""
-}
-
-function back() {
-    var inputVal = document.getElementById('inputVal');
-    inputVal.value = inputVal.value.slice(0, -1)
-
-}
