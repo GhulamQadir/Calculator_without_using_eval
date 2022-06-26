@@ -68,7 +68,6 @@ function getResult(firstNum, secondNum, operator) {
         case "+":
             total = Number(firstNum) + Number(secondNum)
             inputVal.value = total;
-            // secondNum = ""
             // firstNum = inputVal.value
             return total;
             break;
