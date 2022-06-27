@@ -17,35 +17,38 @@
     </center>
     <div id="main_div">
         <center>
-            <p id="history"></p>
-            <input id="inputVal" class="inputVal2" type="text">
+            <div class="upper_div">
+                <p id="history"></p>
+                <input id="inputVal" class="inputVal2" type="text">
+            </div>
+
         </center>
         <center>
             <div class="columns">
                 <button id="clear_btn" onclick="clearInput()">C</button>
-                <button class="button" onclick="getOperator('%')">%</button>
-                <button class="button" onclick="getOperator('/')">÷</button>
-                <button class="button" onclick="back()"><i class="fas fa-backspace"></i></button>
+                <button class="operator" onclick="getOperator('%')">%</button>
+                <button class="operator" onclick="getOperator('/')">÷</button>
+                <button class="operator" onclick="back()"><i class="fas fa-backspace"></i></button>
             </div>
             <div>
                 <button class="button" onclick="getNum('7')">7</button>
                 <button class="button" onclick="getNum('8')">8</button>
                 <button class="button" onclick="getNum('9')">9</button>
-                <button class="button" onclick="getOperator('*')">x</button>
+                <button class="operator" onclick="getOperator('*')">x</button>
             </div>
 
             <div>
                 <button class="button" onclick="getNum('4')">4</button>
                 <button class="button" onclick="getNum('5')">5</button>
                 <button class="button" onclick="getNum('6')">6</button>
-                <button class="button" onclick="getOperator('-')">-</button>
+                <button class="operator" onclick="getOperator('-')">-</button>
             </div>
 
             <div>
                 <button class="button" onclick="getNum('1')">1</button>
                 <button class="button" onclick="getNum('2')">2</button>
                 <button class="button" onclick="getNum('3')">3</button>
-                <button class="button" onclick="getOperator('+')">+</button>
+                <button class="operator" onclick="getOperator('+')">+</button>
             </div>
 
             <div>
